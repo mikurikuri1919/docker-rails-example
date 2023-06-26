@@ -55,6 +55,7 @@ group :development, :test do
 
   # Reduces boot times through caching; required in config/boot.rb
   gem "bootsnap", require: false
+
 end
 
 group :development do

@@ -15,6 +15,15 @@
     </div>
 
     <div class="mb-6">
+      <%= label_tag :user_lists, "Member", class: "mb-2 block text-sm text-gray-600" %>
+      <span class="text-gray-600">
+        <% @group.users.each do |user| %>
+          <%= user.name %>
+        <% end %>
+      </span>
+    </div>
+
+    <div class="mb-6">
       <%= label_tag :created_at, "Created At", class: "mb-2 block text-sm text-gray-600" %>
       <span class="text-gray-600">
         <%= l @group.created_at.in_time_zone('Tokyo'), format: "%Y年%-m月%-d日 %H:%M" %>

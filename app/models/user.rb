@@ -6,4 +6,6 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :name
   end
+  has_many :group_members, dependent: :destroy
+  has_many :groups, through: :group_members
 end

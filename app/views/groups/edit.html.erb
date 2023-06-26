@@ -13,6 +13,13 @@
     </div>
 
     <div class="mb-6">
+      <%= f.label :user_lists, "Member", class: "mb-2 block text-sm text-gray-600" %>
+      <% member_names = @group.users.map(&:name).join(', ') %>
+      <%= f.text_field :user_lists, class: "w-full rounded-md border border-gray-300 py-2 px-3 placeholder:text-gray-300 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-100", placeholder: ',で区切ってください', value: member_names %>
+    </div>
+
+
+    <div class="mb-6">
       <%= label_tag :created_at, "Created At", class: "mb-2 block text-sm text-gray-600" %>
       <span class="text-gray-600">
         <%= l @group.created_at.in_time_zone('Tokyo'), format: "%Y年%-m月%-d日 %H:%M" %>
