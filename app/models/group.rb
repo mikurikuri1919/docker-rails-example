@@ -5,6 +5,8 @@ class Group < ApplicationRecord
   has_many :group_members, dependent: :destroy
   has_many :users, through: :group_members
 
+  has_many :expenses, dependent: :destroy
+
   def save_user(sent_users)
     # 送られてきたユーザー名を元に、Userモデルからユーザーを検索し、存在するユーザーのみを抽出
     exist_new_users = sent_users.map do |sent_user|
