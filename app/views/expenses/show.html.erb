@@ -5,7 +5,7 @@
 </div>
 
 <div class='flex flex-wrap justify-center'>
-  <%= form_with model: @group, url: group_path(@group), local: true, class: "xl:w-8/12 md:w-10/12", data: { turbo: false }, readonly: true  do |f| %>
+  <div class="xl:w-8/12 md:w-10/12">
     <%= render "user/shared/error_messages", resource: @group %>
     <div class="mb-6">
       <%= label_tag :name, "Name", class: "mb-2 block text-sm text-gray-600" %>
@@ -30,13 +30,13 @@
 
     <div class="mb-6">
       <%= label_tag :differences, "differences", class: "mb-2 block text-sm text-gray-600" %>
-      <ul>
+      <ul class="text-gray-600">
         <% @difference.each do |hash| %>
-          <li><%= hash[:user].name %> : <%= hash[:difference] %> 円</li>
+          <li><%= hash[:user].name %>  <%= hash[:difference] %> 円</li>
         <% end %>
       </ul>
     </div>
 
-    <%= link_to "Edit", edit_group_expenses_path(@group), class: "inline-flex w-full items-center justify-center rounded-md bg-indigo-500 p-3 text-white duration-100 ease-in-out hover:bg-indigo-600 focus:outline-none cursor-pointer" %>
-  <% end %>
+    <%= link_to "Edit", edit_group_expense_path(@group), class: "inline-flex w-full items-center justify-center rounded-md bg-blue-500 p-3 text-white duration-100 ease-in-out hover:bg-blue-600 focus:outline-none cursor-pointer"  %>
+  </div>
 </div>

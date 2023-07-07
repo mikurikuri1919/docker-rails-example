@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
   root to: 'pages#home'
   resources :groups, only: %i[index new create show edit update] do
-    resource :expenses, only: %i[show edit update]
+    resources :expenses, only: %i[show edit update]
   end
 
   get '/up/', to: 'up#index', as: :up
