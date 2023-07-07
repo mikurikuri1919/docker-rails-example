@@ -1,0 +1,42 @@
+<div class="mb-6 text-center">
+  <span class="text-3xl font-bold">
+    Show Amount
+  </span>
+</div>
+
+<div class='flex flex-wrap justify-center'>
+  <div class="xl:w-8/12 md:w-10/12">
+    <%= render "user/shared/error_messages", resource: @group %>
+    <div class="mb-6">
+      <%= label_tag :name, "Name", class: "mb-2 block text-sm text-gray-600" %>
+      <span class="text-gray-600">
+        <%= @group.name %>
+      </span>
+    </div>
+
+    <div class="mb-6">
+      <%= label_tag :user_lists, "Member", class: "mb-2 block text-sm text-gray-600" %>
+      <span class="text-gray-600">
+        <% @users.each do |user| %>
+          <%= user.name %>
+          <% if user.expense %>
+            <%= user.expense.amount %> 円  <br>
+          <% else %>
+            0 円  <br>
+          <% end %>
+        <% end %>
+      </span>
+    </div>
+
+    <div class="mb-6">
+      <%= label_tag :differences, "differences", class: "mb-2 block text-sm text-gray-600" %>
+      <ul class="text-gray-600">
+        <% @difference.each do |hash| %>
+          <li><%= hash[:user].name %>  <%= hash[:difference] %> 円</li>
+        <% end %>
+      </ul>
+    </div>
+
+    <%= link_to "Edit", edit_group_expense_path(@group), class: "inline-flex w-full items-center justify-center rounded-md bg-blue-500 p-3 text-white duration-100 ease-in-out hover:bg-blue-600 focus:outline-none cursor-pointer"  %>
+  </div>
+</div>

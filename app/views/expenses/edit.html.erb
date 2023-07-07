@@ -1,0 +1,31 @@
+<div class="mb-6 text-center">
+  <span class="text-3xl font-bold">
+    Edit Amount
+  </span>
+</div>
+
+<div class='flex justify-center'>
+  <div class="xl:w-8/12 md:w-10/12">
+    <%= form_with(model: @group, url: group_expense_path(@group), local: true, class: "w-full") do |form| %>
+      <%= render "user/shared/error_messages", resource: @group %>
+
+      <div class="mb-6">
+        <%= form.label :name, "Name", class: "mb-2 block text-sm text-gray-600" %>
+        <span class="text-gray-600">
+          <%= @group.name %>
+        </span>
+      </div>
+
+      <div class="mb-6">
+        <%= form.label :user_lists, "Member", class: "mb-2 block text-sm text-gray-600" %>
+        <% @users.each do |user| %>
+          <%= form.label "group_user_#{user.id}_expenses", user.name %>
+          <%= form.number_field "group_user_#{user.id}_expenses", value: user.expense&.amount || 0 %>
+          円  <br>
+        <% end %>
+      </div>
+
+      <%= form.submit 'Update Expense', class: "inline-flex w-full items-center justify-center rounded-md bg-blue-500 p-3 text-white duration-100 ease-in-out hover:bg-blue-600 focus:outline-none cursor-pointer"  %>
+    <% end %>
+  </div>
+</div>
